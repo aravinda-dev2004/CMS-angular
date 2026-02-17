@@ -1,0 +1,63 @@
+<div class="glass-card rounded-xl p-6 transition-all duration-300 hover:bg-white/10 hover:scale-[1.02]">
+    <div class="flex items-center justify-between mb-6">
+        <h3 class="text-xl font-bold text-white flex items-center gap-2">
+            <span class="p-2 rounded-lg bg-green-500/20 text-green-400">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+            </span>
+            Existing Customers
+        </h3>
+
+        <div class="relative">
+            <input type="text" placeholder="Search customers..."
+                class="pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white placeholder-gray-500 focus:ring-1 focus:ring-green-500 transition-all outline-none w-64">
+            <svg class="w-4 h-4 text-gray-500 absolute left-3 top-2.5" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+        </div>
+    </div>
+
+    <!-- Customers Table -->
+    <div class="overflow-x-auto rounded-xl border border-white/10">
+        <table class="w-full text-sm text-left text-gray-300">
+            <thead class="text-xs uppercase bg-white/5 text-gray-400 border-b border-white/10">
+                <tr>
+                    <th scope="col" class="px-6 py-4 font-semibold tracking-wider">#</th>
+                    <th scope="col" class="px-6 py-4 font-semibold tracking-wider">Name</th>
+                    <th scope="col" class="px-6 py-4 font-semibold tracking-wider">City</th>
+                    <th scope="col" class="px-6 py-4 font-semibold tracking-wider">Contact</th>
+                    <th scope="col" class="px-6 py-4 font-semibold tracking-wider text-right">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-white/5">
+                <tr *ngFor="let customer of customers; let i = index" class="hover:bg-white/5 transition-colors group">
+                    <td class="px-6 py-4 font-mono text-gray-500">{{ i + 1 }}</td>
+                    <th scope="row"
+                        class="px-6 py-4 font-medium text-white whitespace-nowrap group-hover:text-green-400 transition-colors">
+                        {{ customer.name }}
+                    </th>
+                    <td class="px-6 py-4">{{ customer.city }}</td>
+                    <td class="px-6 py-4 font-mono">{{ customer.contact }}</td>
+                    <td class="px-6 py-4 text-right">
+                        <button class="text-gray-400 hover:text-white transition-colors mr-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                            </svg>
+                        </button>
+                        <button class="text-red-400 hover:text-red-300 transition-colors">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

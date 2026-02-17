@@ -1,0 +1,145 @@
+<div class="glass-card rounded-xl p-6 transition-all duration-300 hover:bg-white/10 hover:scale-[1.02]">
+    <!-- Order Form Section -->
+    <div class="mb-10 bg-white/5 border border-white/10 rounded-2xl p-6">
+        <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+            <span class="p-2 rounded-lg bg-blue-500/20 text-blue-400">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+            </span>
+            <span class="text-white">Place New Order</span>
+        </h3>
+
+        <form (ngSubmit)="addOrder()" #orderForm="ngForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="space-y-2">
+                <label class="text-sm font-medium text-gray-300 ml-1">Product Name</label>
+                <input type="text" name="productName" [(ngModel)]="orderObj.productName" #productName="ngModel" required
+                    class="w-full px-4 py-3 bg-black/20 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white placeholder-gray-500 transition-all outline-none"
+                    [class.border-red-500/50]="productName.invalid && (productName.dirty || productName.touched)"
+                    placeholder="e.g. MacBook Pro">
+                <div *ngIf="productName.invalid && (productName.dirty || productName.touched)"
+                    class="text-red-400 text-xs ml-1">
+                    Product name is required
+                </div>
+            </div>
+
+            <div class="space-y-2">
+                <label class="text-sm font-medium text-gray-300 ml-1">Color</label>
+                <input type="text" name="color" [(ngModel)]="orderObj.color" #color="ngModel" required
+                    class="w-full px-4 py-3 bg-black/20 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white placeholder-gray-500 transition-all outline-none"
+                    [class.border-red-500/50]="color.invalid && (color.dirty || color.touched)"
+                    placeholder="e.g. Space Gray">
+                <div *ngIf="color.invalid && (color.dirty || color.touched)" class="text-red-400 text-xs ml-1">
+                    Color is required
+                </div>
+            </div>
+
+            <div class="space-y-2">
+                <label class="text-sm font-medium text-gray-300 ml-1">Category</label>
+                <select name="category" [(ngModel)]="orderObj.category" #category="ngModel" required
+                    class="w-full px-4 py-3 bg-black/20 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white transition-all outline-none appearance-none"
+                    [class.border-red-500/50]="category.invalid && (category.dirty || category.touched)">
+                    <option value="" disabled selected class="text-gray-500 bg-gray-900">Select Category</option>
+                    <option value="Laptop" class="text-white bg-gray-900">Laptop</option>
+                    <option value="Phone" class="text-white bg-gray-900">Phone</option>
+                    <option value="Accessories" class="text-white bg-gray-900">Accessories</option>
+                    <option value="Wearables" class="text-white bg-gray-900">Wearables</option>
+                </select>
+                <div *ngIf="category.invalid && (category.dirty || category.touched)" class="text-red-400 text-xs ml-1">
+                    Category is required
+                </div>
+            </div>
+
+            <div class="space-y-2">
+                <label class="text-sm font-medium text-gray-300 ml-1">Price</label>
+                <input type="number" name="price" [(ngModel)]="orderObj.price" #price="ngModel" required min="1"
+                    class="w-full px-4 py-3 bg-black/20 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white placeholder-gray-500 transition-all outline-none"
+                    [class.border-red-500/50]="price.invalid && (price.dirty || price.touched)" placeholder="e.g. 1999">
+                <div *ngIf="price.invalid && (price.dirty || price.touched)" class="text-red-400 text-xs ml-1">
+                    <span *ngIf="price.errors?.['required']">Price is required</span>
+                    <span *ngIf="price.errors?.['min']">Must be > 0</span>
+                </div>
+            </div>
+
+            <div class="md:col-span-2 pt-2">
+                <button type="submit" [disabled]="!orderForm.form.valid"
+                    class="w-full py-3.5 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold rounded-xl shadow-lg transform transition-all duration-200 hover:scale-[1.01] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed">
+                    Add Order
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Orders Table -->
+    <div class="overflow-x-auto rounded-xl border border-white/10">
+        <table class="w-full text-sm text-left text-gray-300">
+            <thead class="text-xs uppercase bg-white/5 text-gray-400 border-b border-white/10">
+                <tr>
+                    <th scope="col" class="px-6 py-4 font-semibold tracking-wider">Product Name</th>
+                    <th scope="col" class="px-6 py-4 font-semibold tracking-wider">Color</th>
+                    <th scope="col" class="px-6 py-4 font-semibold tracking-wider">Category</th>
+                    <th scope="col" class="px-6 py-4 font-semibold tracking-wider">Price</th>
+                    <th scope="col" class="px-6 py-4 font-semibold tracking-wider">Action</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-white/5">
+                <tr class="hover:bg-white/5 transition-colors group">
+                    <th scope="row"
+                        class="px-6 py-4 font-medium text-white whitespace-nowrap group-hover:text-blue-400 transition-colors">
+                        Apple MacBook Pro 17"
+                    </th>
+                    <td class="px-6 py-4">Silver</td>
+                    <td class="px-6 py-4">
+                        <span class="px-2 py-1 bg-purple-500/20 text-purple-300 rounded-md text-xs">Laptop</span>
+                    </td>
+                    <td class="px-6 py-4 font-medium text-white">$2999</td>
+                    <td class="px-6 py-4">
+                        <a href="#" class="text-blue-400 hover:text-blue-300 hover:underline">Edit</a>
+                    </td>
+                </tr>
+                <tr class="hover:bg-white/5 transition-colors group">
+                    <th scope="row"
+                        class="px-6 py-4 font-medium text-white whitespace-nowrap group-hover:text-blue-400 transition-colors">
+                        Microsoft Surface Pro
+                    </th>
+                    <td class="px-6 py-4">White</td>
+                    <td class="px-6 py-4">
+                        <span class="px-2 py-1 bg-purple-500/20 text-purple-300 rounded-md text-xs">Laptop PC</span>
+                    </td>
+                    <td class="px-6 py-4 font-medium text-white">$1999</td>
+                    <td class="px-6 py-4">
+                        <a href="#" class="text-blue-400 hover:text-blue-300 hover:underline">Edit</a>
+                    </td>
+                </tr>
+                <tr class="hover:bg-white/5 transition-colors group">
+                    <th scope="row"
+                        class="px-6 py-4 font-medium text-white whitespace-nowrap group-hover:text-blue-400 transition-colors">
+                        Magic Mouse 2
+                    </th>
+                    <td class="px-6 py-4">Black</td>
+                    <td class="px-6 py-4">
+                        <span class="px-2 py-1 bg-green-500/20 text-green-300 rounded-md text-xs">Accessories</span>
+                    </td>
+                    <td class="px-6 py-4 font-medium text-white">$99</td>
+                    <td class="px-6 py-4">
+                        <a href="#" class="text-blue-400 hover:text-blue-300 hover:underline">Edit</a>
+                    </td>
+                </tr>
+                <tr class="hover:bg-white/5 transition-colors group">
+                    <th scope="row"
+                        class="px-6 py-4 font-medium text-white whitespace-nowrap group-hover:text-blue-400 transition-colors">
+                        Apple Watch 5
+                    </th>
+                    <td class="px-6 py-4">Red</td>
+                    <td class="px-6 py-4">
+                        <span class="px-2 py-1 bg-pink-500/20 text-pink-300 rounded-md text-xs">Wearables</span>
+                    </td>
+                    <td class="px-6 py-4 font-medium text-white">$999</td>
+                    <td class="px-6 py-4">
+                        <a href="#" class="text-blue-400 hover:text-blue-300 hover:underline">Edit</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

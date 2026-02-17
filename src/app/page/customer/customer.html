@@ -1,0 +1,21 @@
+<div class="glass-card rounded-xl p-6 transition-all duration-300 hover:bg-white/10 hover:scale-[1.02]">
+    <div class="flex items-center justify-between mb-8">
+        <h2 class="text-3xl font-bold text-white">Customer Management</h2>
+
+        <div class="flex bg-white/5 p-1 rounded-xl">
+            <a routerLink="view" routerLinkActive="bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg"
+                class="px-6 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white transition-all duration-300">
+                View All
+            </a>
+            <a routerLink="add" routerLinkActive="bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg"
+                class="px-6 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white transition-all duration-300">
+                Add New
+            </a>
+        </div>
+    </div>
+
+    <!-- Child Route Content -->
+    <div class="min-h-[400px]">
+        <router-outlet></router-outlet>
+    </div>
+</div>
