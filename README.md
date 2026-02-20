@@ -1,59 +1,65 @@
-# Ex01
-
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.3.
+# 📝 CMS Angular 
 
-## Development server
+> A modern, scalable, and responsive Content Management System (CMS) built with Angular.
 
-To start a local development server, run:
+![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)
 
-```bash
-ng serve
-```
+## 📖 Description
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+**CMS Angular** is a robust frontend application designed to streamline content creation, user management, and administrative workflows. Built heavily on modern Angular architectural patterns, it provides an intuitive dashboard for administrators to manage digital content seamlessly. Whether you are managing blog posts, user roles, or dynamic site data, this CMS is designed for high performance and maintainability.
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 📸 Screenshots
 
-```bash
-ng generate component component-name
-```
+*(Replace the placeholder images below by placing your actual `.png` files into the `assets/` folder of your project root)*
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Login page
+![Dashboard View](assets/login.png)
 
-```bash
-ng generate --help
-```
 
-## Building
+### Content Editor
+![AddCustomer](assets/Dashboard.png)
+![Orders](assets/Dashboard-orders.png)
 
-To build the project run:
+---
 
-```bash
-ng build
-```
+## ✨ Features
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+* **📊 Interactive Dashboard:** Visualized data and statistics at a glance.
+* **👥 User & Role Management:** Easily assign permissions and manage user accounts.
+* **✍️ Rich Content Management:** Create, read, update, and delete (CRUD) operations for all content types.
+* **📱 Fully Responsive UI:** Optimized for desktop, tablet, and mobile devices.
+* **🔒 Secure Authentication:** JWT-based authentication guards and role-based routing.
+* **⚡ High Performance:** Lazy-loaded modules and optimized state management.
 
-## Running unit tests
+---
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+## 🛠️ Tech Stack
 
-```bash
-ng test
-```
+* **Framework:** [Angular](https://angular.io/)
+* **Language:** [TypeScript](https://www.typescriptlang.org/)
+* **Styling:** SCSS / CSS 
+* **State Management:** RxJS (and/or NgRx depending on implementation)
+* **HTTP Client:** Angular HttpClient for seamless API integration
 
-## Running end-to-end tests
+---
 
-For end-to-end (e2e) testing, run:
+## 🚀 Getting Started
 
-```bash
-ng e2e
-```
+Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+### Prerequisites
 
-## Additional Resources
+Ensure you have the following installed on your local environment:
+* [Node.js](https://nodejs.org/) (v16.x or higher recommended)
+* [Angular CLI](https://angular.io/cli) (`npm install -g @angular/cli`)
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/aravinda-dev2004/CMS-angular.git](https://github.com/aravinda-dev2004/CMS-angular.git)
