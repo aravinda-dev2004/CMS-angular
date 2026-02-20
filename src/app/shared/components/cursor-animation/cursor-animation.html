@@ -1,13 +1,22 @@
-<div class="fixed pointer-events-none z-[9999] mix-blend-difference">
-    <!-- Main Cursor -->
-    <div class="absolute w-4 h-4 rounded-full bg-cyan-400 transform -translate-x-1/2 -translate-y-1/2 transition-transform duration-75"
-        [style.left.px]="cursorX" [style.top.px]="cursorY">
+<div class="cursor-root">
+
+    <!-- Outer magnetic ring (lags behind) -->
+    <div class="cursor-ring" [style.left.px]="ringX" [style.top.px]="ringY" [class.ring-clicked]="clicking">
     </div>
 
-    <!-- Trails -->
-    <div *ngFor="let trail of trails; let i = index"
-        class="absolute w-2 h-2 rounded-full bg-cyan-400 opacity-50 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300"
-        [style.left.px]="trail.x" [style.top.px]="trail.y" [style.opacity]="(i / trails.length) * 0.5"
-        [style.transform]="'scale(' + (i / trails.length) + ')'">
+    <!-- Inner precision dot -->
+    <div class="cursor-dot" [style.left.px]="cursorX" [style.top.px]="cursorY" [class.dot-clicked]="clicking">
     </div>
+
+    <!-- Sparkle trail particles -->
+    <div *ngFor="let s of sparkles; trackBy: trackSparkle" class="cursor-sparkle" [style.left.px]="s.x"
+        [style.top.px]="s.y" [style.width.px]="s.size" [style.height.px]="s.size" [style.opacity]="s.opacity"
+        [style.background]="s.color" [style.transform]="'rotate(' + s.rot + 'deg) scale(' + s.scale + ')'">
+    </div>
+
+    <!-- Click ripple burst -->
+    <div *ngFor="let r of ripples; trackBy: trackRipple" class="cursor-ripple" [style.left.px]="r.x"
+        [style.top.px]="r.y">
+    </div>
+
 </div>
